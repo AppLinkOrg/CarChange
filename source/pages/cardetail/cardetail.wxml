@@ -1,0 +1,152 @@
+<!--pages/cardetail/cardetail.wxml-->
+
+<view class='white-block'>
+  <view class='flex-row tabs'>
+    <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="0">
+      <view class='flex-1'></view>
+      <view class='txt-light tabtext  {{currenttab==0?"active":""}}'>基础</view>
+      <view class='flex-1'></view>
+    </view>
+    <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="1">
+      <view class='flex-1'></view>
+      <view class='txt-light tabtext {{currenttab==1?"active":""}}'>实拍</view>
+      <view class='flex-1'></view>
+    </view>
+
+    <view class='flex-1 tab  flex-row ' bindtap='changeTab' wx:for="{{modelinfo.infolist}}" wx:key="k" wx:for-index="idx" id="{{idx+2}}">
+      <view class='flex-1'></view>
+      <view class='txt-light tabtext {{currenttab==(idx+2)?"active":""}}'>{{item.name}}</view>
+      <view class='flex-1'></view>
+    </view>
+
+  </view>
+
+<swiper indicator-dots="{{false}}" class='bottomtabs ' current='{{currenttab}}' bindchange="changeCurrentTab" class="maintab">
+  <swiper-item >
+    <scroll-view scroll-y style='height:100%'>
+
+<view class='padding-40 white-block margin-top'>
+  <view class='flex-row flex-center'>
+    <view class='h5 txt-gray flex-1 text-center'>市场信息</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top padding-20'>
+    <view class='h6 ' style='width:200rpx;'>品牌</view>
+    <view class='h6 flex-1'>{{modelinfo.brand_name}}</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>型号</view>
+    <view class='h6 flex-1'>{{modelinfo.name}}</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>车型</view>
+    <view class='h6 flex-1'>{{modelinfo.carsize_name}}</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>新车参考价</view>
+    <view class='h6 flex-1'>{{modelinfo.price}}</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>含税参考价</view>
+    <view class='h6 flex-1'>{{modelinfo.totalprice}}</view>
+  </view>
+</view>
+
+
+<view class='padding-40 white-block margin-top'>
+  <view class='flex-row flex-center'>
+    <view class='h5 txt-gray flex-1 text-center'>基本信息</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top padding-20'>
+    <view class='h6 ' style='width:200rpx;'>表显里程</view>
+    <view class='h6 flex-1'>{{info.milestone}}万公里</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>上牌日期</view>
+    <view class='h6 flex-1'>{{info.card_date_formatting}}</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>车辆归属地</view>
+    <view class='h6 flex-1'>{{info.guishudi==""?"暂无":info.guishudi}}</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>车身颜色</view>
+    <view class='h6 flex-1'>{{info.color==""?"暂无":info.color}}</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>排放标准</view>
+    <view class='h6 flex-1'>{{info.paifangbiaozhun==""?"暂无":info.paifangbiaozhun}}</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>变速箱</view>
+    <view class='h6 flex-1'>{{info.biansuxiang_name}}</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>排放标准</view>
+    <view class='h6 flex-1'>{{info.paifangbiaozhun==""?"暂无":info.paifangbiaozhun}}</view>
+  </view>
+  <view class='flex-row margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>排量</view>
+    <view class='h6 flex-1'>{{info.pailiang==""?"暂无":info.pailiang}}</view>
+  </view>
+</view>
+
+
+
+<view class='padding-40 white-block' wx:if="{{info.features.length>0}}">
+  <view class='flex-row flex-center'>
+    <view class='h5 txt-gray flex-1 text-center'>配置亮点</view>
+  </view>
+  <view class='flex-row flex-center'>
+    <view class='h6 txt-gray flex-1 text-center'>仅供参考，购买前请与销售确认</view>
+  </view>
+  <view class='flex-row flex-wrap margin-top-10' >
+    <view class='baozhangitem' wx:for="{{info.features}}" wx:key="k" >
+      <view class='text-center'>
+        <image src='{{uploadpath}}resource/{{item.logo}}'></image>
+      </view>
+      <view class='text-center h6'>
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class='padding-40 white-block' wx:if="{{info.features.length>0}}">
+  <view class='flex-row flex-center'>
+    <view class='h5 txt-gray flex-1 text-center'>车辆描述</view>
+  </view>
+  <view class='margin-top h6' >
+    <text>{{info.detaildescription}}</text>
+  </view>
+</view>
+
+
+    </scroll-view>
+  </swiper-item>
+
+  <swiper-item >
+    <scroll-view scroll-y style='height:100%'>
+    <view wx:for="{{photolist}}" wx:key="k">
+      <image class='fullimg' src='{{uploadpath}}car/{{item.photo}}'></image>
+    </view>
+    </scroll-view>
+  </swiper-item>
+
+
+  <swiper-item wx:for="{{modelinfo.infolist}}" wx:key="k" >
+    <scroll-view scroll-y style='height:100%'>
+    <view class='padding-20'>
+    
+  <view class='flex-row border-bottom  margin-top-10 padding-20' wx:for="{{item.infos}}" wx:key="k">
+    <view class='h6 '  style='width:300rpx;'>{{item.name}}</view>
+    <view class='h6 flex-1'>{{item.value==""||item.value==null?"暂无":item.value}}</view>
+  </view>
+    </view>
+    </scroll-view>
+  </swiper-item>
+
+
+</swiper>
+
+</view>

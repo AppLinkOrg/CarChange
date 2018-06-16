@@ -1,0 +1,165 @@
+<!--pages/car/car.wxml-->
+<view>
+  <swiper style='height:63vw;' autoplay>
+    <swiper-item wx:for="{{photolist}}" wx:key="k">
+      <image class='photobanner' src='{{uploadpath}}car/{{item.photo}}'></image>
+    </swiper-item>
+  </swiper>
+</view>
+
+<view class='white-block padding-40'>
+  <view class='h4 txt-bold'>{{info.name}}</view>
+  <view class='flex-row margin-top-10'>
+    <view class='h6 '>{{info.factory_date_formatting}}</view>
+
+    <view class='h6 ' style='margin-left:20rpx;'>{{info.milestone}}万公里</view>
+    <view class='h6 ' style='margin-left:20rpx;'>{{info.buy_city}}</view>
+    <view class='h6 ' style='margin-left:20rpx;'>{{info.paifangbiaozhun}}</view>
+  </view>
+  <view class='margin-top-10 flex-row'>
+    <view class=' flex-1'>
+      <view class='h4 txt-primary txt-bold margin-top-10'>{{info.price}}万</view>
+
+      <view class='h6 txt-gray margin-top-10 '>新车含税价：{{modelinfo.totalprice}}万 省{{modelinfo.totalprice-info.price}}万</view>
+    </view>
+    <view class='margin-top-10 '>
+      <button size='mini'   open-type='{{memberinfo.mobile.length==11?"":"getPhoneNumber"}}' bindgetphonenumber='getPhoneNo' bindtap='queryCar'>降价通知</button>
+    </view>
+  </view>
+  <view class='h6 txt-gray margin-top-10 '>{{info.description}}</view>
+</view>
+
+<view class='padding-40 margin-top white-block flex-row flex-center'>
+  <view>
+    <image class='icon' style='margin-top:8rpx;margin-right:10rpx;' src='{{uploadpath}}resource/card.png'></image>
+  </view>
+  <view>贷款</view>
+  <view class='flex-1 text-right h6'>
+    <button class='h6 clear-button'  open-type='{{memberinfo.mobile.length==11?"":"getPhoneNumber"}}' bindgetphonenumber='getPhoneNo' bindtap='queryCar'>具体方案清咨询销售顾问</button>
+  </view>
+</view>
+
+<view class='padding-40 white-block margin-top' bindtap='backHome'>
+  <view class='flex-row flex-center'>
+    <view class='h5 flex-1'>{{instinfo.name}}</view>
+    <view class='h6 txt-gray'>看其他车型 > </view>
+  </view>
+</view>
+<view class='padding-40 white-block border-top' bindtap='openMap' id="{{instinfo.address}}">
+  <view class='flex-row flex-center'>
+    <view class='h6 flex-1'>{{instinfo.address}}</view>
+    <view>
+      <image src='{{uploadpath}}resource/location.png' class='icon'></image>
+    </view>
+  </view>
+</view>
+<view class='padding-40 white-block border-top' bindtap='phoneCall' id="{{info.salesnumber}}">
+  <view class='flex-row flex-center'>
+    <view class='h6 flex-1'>{{info.salesnumber}}</view>
+    <view>
+      <image src='{{uploadpath}}resource/phone.png' class='icon'></image>
+    </view>
+  </view>
+</view>
+
+
+<view class='padding-40 white-block margin-top'>
+  <view class='flex-row flex-center'>
+    <view class='h5 txt-gray flex-1 text-center'>基本信息</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top padding-20'>
+    <view class='h6 ' style='width:200rpx;'>表显里程</view>
+    <view class='h6 flex-1'>{{info.milestone}}万公里</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>上牌日期</view>
+    <view class='h6 flex-1'>{{info.card_date_formatting}}</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>车辆归属地</view>
+    <view class='h6 flex-1'>{{info.guishudi==""?"暂无":info.guishudi}}</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>车身颜色</view>
+    <view class='h6 flex-1'>{{info.color==""?"暂无":info.color}}</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>排放标准</view>
+    <view class='h6 flex-1'>{{info.paifangbiaozhun==""?"暂无":info.paifangbiaozhun}}</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>变速箱</view>
+    <view class='h6 flex-1'>{{info.biansuxiang_name}}</view>
+  </view>
+  <view class='flex-row border-bottom  margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>排放标准</view>
+    <view class='h6 flex-1'>{{info.paifangbiaozhun==""?"暂无":info.paifangbiaozhun}}</view>
+  </view>
+  <view class='flex-row margin-top-10 padding-20'>
+    <view class='h6 ' style='width:200rpx;'>排量</view>
+    <view class='h6 flex-1'>{{info.pailiang==""?"暂无":info.pailiang}}</view>
+  </view>
+</view>
+
+
+
+<view class='padding-40 white-block' wx:if="{{info.features.length>0}}">
+  <view class='flex-row flex-center'>
+    <view class='h5 txt-gray flex-1 text-center'>配置亮点</view>
+  </view>
+  <view class='flex-row flex-center'>
+    <view class='h6 txt-gray flex-1 text-center'>仅供参考，购买前请与销售确认</view>
+  </view>
+  <view class='flex-row flex-wrap margin-top-10' >
+    <view class='baozhangitem' wx:for="{{info.features}}" wx:key="k" >
+      <view class='text-center'>
+        <image src='{{uploadpath}}resource/{{item.logo}}'></image>
+      </view>
+      <view class='text-center h6'>
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class='padding-40 white-block' wx:if="{{info.features.length>0}}">
+  <view class='flex-row flex-center'>
+    <view class='h5 txt-gray flex-1 text-center'>车辆描述</view>
+  </view>
+  <view class='margin-top h6' >
+    <text>{{info.detaildescription}}</text>
+  </view>
+</view>
+
+<view style='height:150rpx;'></view>
+<view class='fixedbottom flex-row white-block flex-center border-top' >
+  <view class='text-center flex-1' style="padding-top:10rpx;padding-bottom:10rpx;"  bindtap='backHome'>
+    <view class='line-height-0'>
+      <image class='icon-25' src='{{uploadpath}}resource/store2.png'></image>
+    </view>
+    <view class='h6'>进店</view>
+  </view>
+  <view class='text-center flex-1' style="padding-top:10rpx;padding-bottom:10rpx;border-left:2rpx rgba(211,211,211,0.5) solid;" bindtap='fav'>
+    <view  class='line-height-0'>
+      <image class='icon-25' src='{{uploadpath}}resource/fav{{faved==true?"-a":""}}.png'></image>
+    </view>
+    <view class='h6'>收藏</view>
+  </view>
+  <view class='text-center flex-1' style="padding-top:10rpx;padding-bottom:10rpx;border-left:2rpx rgba(211,211,211,0.5) solid;"  bindtap='phoneCall' id="{{info.salesnumber}}">
+    <view  class='line-height-0'>
+      <image class='icon-25' src='{{uploadpath}}resource/phone3.png'></image>
+    </view>
+    <view class='h6'>电话</view>
+  </view>
+  <view class='text-center bg-primary txt-white ' style='flex:2;height:100rpx;border-left:2rpx rgba(211,211,211,0.5) solid;'><view style='margin-top:30rpx;'><button class='clear-button txt-white' open-type='{{memberinfo.mobile.length==11?"":"getPhoneNumber"}}' bindgetphonenumber='getPhoneNo' bindtap='queryCar' >询价</button></view></view>
+  <view class='text-center bg-primary txt-white txt-bold' style='flex:2;height:100rpx;border-left:2rpx rgba(211,211,211,0.5) solid;'><view style='margin-top:30rpx;' bindtap='gotoDetail'>详细配置</view></view>
+</view>
+
+<view class='noticeblackbg' wx:if="{{noticesuccess==true}}"></view>
+<view class='noticebg' style='background-image:url({{uploadpath}}resource/noticebg.png)' wx:if="{{noticesuccess==true}}">
+  <view class='h3 text-center' style='margin-top:300rpx;'>已为你通知商家</view>
+  <view class='h6 text-center padding-20' >您的专属销售顾问会尽快与你取得联系！</view>
+  <view class='h6 text-center' >联系电话：{{memberinfo.mobile}}</view>
+  <view class='text-center padding-20' ><button size='mini' class="h6" bindtap='closenotice'>知道了</button></view>
+</view>
