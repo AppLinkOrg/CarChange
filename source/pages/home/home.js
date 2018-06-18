@@ -68,12 +68,20 @@ class Content extends AppBase {
     console.log(e);
     this.Base.setMyData({ currenttab: e.currentTarget.id });
   }
+  switchBrand(e){
+    var id=e.currentTarget.id;
+    AppBase.CarSearchData={brand_id:id};
+    wx.switchTab({
+      url: '/pages/carsearch/carsearch',
+    })
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad; 
 body.onMyShow = content.onMyShow;
 body.gotoSearch = content.gotoSearch;
-body.changeCurrentTab = content.changeCurrentTab;
+body.changeCurrentTab = content.changeCurrentTab; 
 body.changeTab = content.changeTab;
+body.switchBrand = content.switchBrand;
 Page(body)

@@ -10,7 +10,9 @@ import { MemberApi } from "apis/member.api";
 export class AppBase {
 
   static UserInfo = {};
+  static CarSearchData=null;
   unicode = "yunyichuang";
+  
   needauth = true;
   pagetitle=null;
   app = null;

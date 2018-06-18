@@ -25,6 +25,7 @@ page{
 view,navigator{
   font-size: 32rpx;
   font-weight: lighter;
+  color: #2c2c2c;
 }
 .flex-row{
   display: flex;
@@ -138,7 +139,18 @@ button[disabled][type=primary] {
 .margin-top-10{
   margin-top:20rpx;
 }
+.margin-top-5{
+  margin-top:10rpx;
+}
 
+.icon-10{
+  width: 20rpx;
+  height: 20rpx;
+}
+.icon-15{
+  width: 30rpx;
+  height: 30rpx;
+}
 .icon{
   width: 40rpx;
   height: 40rpx;
@@ -251,6 +263,11 @@ button[disabled][type=primary] {
   width: 100rpx;
   margin-right: 10rpx;
   color:#999;
+}
+
+.findno{
+  width: 257rpx;
+  height: 257rpx;
 }
 
 .rowitem .play{

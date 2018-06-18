@@ -2,6 +2,7 @@
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from '../../apis/inst.api';
+import { CarApi } from '../../apis/car.api';
 
 class Content extends AppBase {
   constructor() {
@@ -22,7 +23,11 @@ class Content extends AppBase {
       instapi.searchkeyword({},(ret)=>{
         that.Base.setMyData({ history: ret.history, hotest: ret.hotest});
       });
-      
+
+      var carapi = new CarApi();
+      carapi.list({ hotcar: "Y" }, (hotlist) => {
+        this.Base.setMyData({ hotlist });
+      });
   }
 
   showInput() {
@@ -49,7 +54,7 @@ class Content extends AppBase {
   }
   search(){
     var inputVal = this.Base.getMyData().inputVal;
-    var api = new CourseApi();
+    var api = new CarApi();
     api.search({keyword:inputVal},(searchresult)=>{
       this.Base.setMyData({ searchresult});
     });

@@ -77,8 +77,8 @@ height: 350rpx;
   padding-bottom: 20rpx;
 }
 .branditem image{
-  width:60rpx;
-  height: 60rpx;
+  width:100rpx;
+  height: 100rpx;
 }
 
 .baozhangitem{

@@ -102,3 +102,24 @@
   margin-top: 10rpx;
   margin-right: 10rpx;
 }
+
+
+.caritem{
+  width: 50%;
+}
+.caritem image{
+  width: 320rpx;
+  height: 240rpx;
+}
+
+
+.list{
+  padding-left:20rpx;
+}
+.list .item:last-child{
+  border-bottom: 0rpx;
+}
+.list .photo{
+  width:240rpx;
+  height: 190rpx;
+}

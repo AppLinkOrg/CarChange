@@ -153,7 +153,7 @@
     <view class='h6'>电话</view>
   </view>
   <view class='text-center bg-primary txt-white ' style='flex:2;height:100rpx;border-left:2rpx rgba(211,211,211,0.5) solid;'><view style='margin-top:30rpx;'><button class='clear-button txt-white' open-type='{{memberinfo.mobile.length==11?"":"getPhoneNumber"}}' bindgetphonenumber='getPhoneNo' bindtap='queryCar' >询价</button></view></view>
-  <view class='text-center bg-primary txt-white txt-bold' style='flex:2;height:100rpx;border-left:2rpx rgba(211,211,211,0.5) solid;'><view style='margin-top:30rpx;' bindtap='gotoDetail'>详细配置</view></view>
+  <view class='text-center bg-primary txt-white txt-bold' style='flex:2;height:100rpx;border-left:2rpx rgba(211,211,211,0.5) solid;'><view style='margin-top:30rpx;color:white;' bindtap='gotoDetail'>详细配置</view></view>
 </view>
 
 <view class='noticeblackbg' wx:if="{{noticesuccess==true}}"></view>

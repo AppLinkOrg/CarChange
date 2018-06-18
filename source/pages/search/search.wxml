@@ -30,26 +30,52 @@
         <view wx:for="{{hotest}}" wx:key="k" class='keyword' id="{{item.keyword}}" bindtap='searchKeyword'>{{item.keyword}}</view>
       </view>
     </block>
+
+
+<view class='padding-40 white-block margin-top'>
+  <view class='h4 txt-bold'>热门推荐</view>
+  <view class='flex-row flex-wrap'>
+    <navigator url='/pages/car/car?id={{item.id}}' wx:for="{{hotlist}}" wx:key="k" class='caritem margin-top'>
+      <view>
+        <image src='{{uploadpath}}car/{{item.photo}}'></image>
+      </view>
+      <view class='h5 txt-bold '>
+        {{item.name}}
+      </view>
+      <view class='h6'>
+        {{item.automodel_name}}
+      </view>
+      <view class='h6 txt-gray'>
+        {{item.factory_date_formatting}} {{milestone}}万公里
+      </view>
+      <view class='flex-row flex-bottom'>
+        <view class="txt-primary txt-bold">{{item.price}}万</view>
+        <view class='h6 txt-gray' style='margin-left:10rpx;'>新车价：{{item.automodel_price}}万</view>
+      </view>
+    </navigator>
+  </view>
+</view>
+
+
   </block>
   <block wx:else>
     <view>
-      <view class='white-block'>
-        <navigator url='/pages/course/course?id={{item.id}}' wx:for="{{searchresult}}" wx:key="k" class='flex-row rowitem'>
-          <view>
-            <image src='{{uploadpath}}course/{{item.cover}}' class='imgcover' mode='aspectFill'></image>
-          </view>
-          <view class='flex-1'>
-            <view class='headtitle'>{{item.title}}</view>
-            <view class='headdescription'>{{item.summary}}
-            </view><view class='flex-row headdescription'>
-                    <view>
-                      <image src="{{uploadpath}}resource/time.png" mode='widthFix' style='width:30rpx;height:30rpx;'></image>
-                    </view>
-                    <view class='headdescription'>{{item.totalplaytime}}</view>
-                  </view>
-          </view>
-        </navigator>
+      <view  class='list white-block'>
+    <navigator url='/pages/car/car?id={{item.id}}' class='flex-row padding-20 item border-bottom' wx:for="{{searchresult}}" wx:key="k" wx:for-index="idx">
+      <view>
+        <image class='photo' src='{{uploadpath}}car/{{item.photo}}'></image>
       </view>
+      <view class='flex-1' style='margin-left:20rpx;'>
+        <view class='txt-bold'>{{item.automodel_shortname}}</view>
+        <view class='txt-bold margin-top-5'>{{item.name}}</view>
+        <view class='margin-top-5 h6 txt-gray'>{{item.factory_date_formatting}} | {{item.milestone}}万公里 | {{item.guishudi}}</view>
+        <view class="txt-primary h5 margin-top-5 ">
+          <text class='txt-bold '>{{item.price}}万</text>
+          <text class='h6 txt-gray' style='margin-left:20rpx;'>新车价：{{item.automodel_price}}万</text>
+        </view>
+      </view>
+    </navigator>
+  </view>
 
       <view class='inbottomla' wx:if="{{searchresult.length>7}}">
         到底啦

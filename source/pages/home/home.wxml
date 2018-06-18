@@ -58,7 +58,7 @@
   </view>
 
   <view class='padding-20 flex-row flex-wrap' wx:if="{{currenttab==0}}">
-    <view class='branditem' wx:for="{{indexbrand}}" wx:key="k">
+    <view class='branditem' wx:for="{{indexbrand}}" wx:key="k" bindtap='switchBrand' id="{{item.brand_id}}">
       <view class='text-center'>
         <image src='{{uploadpath}}brand/{{item.brand_logo}}'></image>
       </view>
@@ -66,9 +66,9 @@
         {{item.brand_name}}
       </view>
     </view>
-    <view class='branditem'>
-      <view class='text-center' style='height:70rpx;'>
-        <image style='width:40rpx;height:40rpx;margin-top:10rpx;' src='{{uploadpath}}resource/more-right.png'></image>
+    <view class='branditem' bindtap='switchBrand' id="0">
+      <view class='text-center' style='height:110rpx;'>
+        <image style='width:70rpx;height:70rpx;margin-top:10rpx;' src='{{uploadpath}}resource/more-right.png'></image>
       </view>
       <view class='text-center h6'>
         更多品牌
@@ -124,7 +124,7 @@
     </navigator>
   </view>
 </view>
-<navigator url='/pages/carlist/carlist' class='padding-20 white-block text-center h6 border-top'>
+<navigator url='/pages/carsearch/carsearch' open-type='switchTab' class='padding-20 white-block text-center h6 border-top'>
   查看全部
 </navigator>
 
@@ -152,7 +152,7 @@
     </navigator>
   </view>
 </view>
-<navigator url='/pages/carlist/carlist' class='padding-20 white-block text-center h6 border-top'>
+<navigator url='/pages/carsearch/carsearch' open-type='switchTab' class='padding-20 white-block text-center h6 border-top'>
   查看全部
 </navigator>
 

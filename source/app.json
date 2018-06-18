@@ -1,10 +1,11 @@
 {
   "pages":[
-    "pages/cardetail/cardetail",
     "pages/home/home",
+    "pages/carsearch/carsearch",
+    "pages/search/search",
+    "pages/cardetail/cardetail",
     "pages/car/car",
     "pages/product/product",
-    "pages/search/search",
     "pages/auth/auth",
     "pages/success/success",
     "pages/signup/signup",
@@ -37,25 +38,25 @@
         "selectedIconPath": "images/icons/home.png"
       },
       {
-        "text": "关于我们",
-        "pagePath": "pages/aboutuslist/aboutuslist",
-        "iconPath": "images/icons/hotel-o.png",
-        "selectedIconPath": "images/icons/hotel.png"
+        "text": "买车",
+        "pagePath": "pages/carsearch/carsearch",
+        "iconPath": "images/icons/car-o.png",
+        "selectedIconPath": "images/icons/car.png"
       },
       {
-        "text": "产品",
+        "text": "找车",
         "pagePath": "pages/productlist/productlist",
         "iconPath": "images/icons/store-o.png",
         "selectedIconPath": "images/icons/store.png"
       },
       {
-        "text": "动态",
+        "text": "卖车",
         "pagePath": "pages/newslist/newslist",
         "iconPath": "images/icons/list-o.png",
         "selectedIconPath": "images/icons/list.png"
       },
       {
-        "text": "服务",
+        "text": "我的",
         "pagePath": "pages/servicelist/servicelist",
         "iconPath": "images/icons/service-o.png",
         "selectedIconPath": "images/icons/service.png"

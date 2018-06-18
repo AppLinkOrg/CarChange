@@ -1,0 +1,158 @@
+<!--pages/carsearch/carsearch.wxml-->
+<view class='white-block padding-20' hidden='{{inviewing==true}}'>
+  <view class='searchbar' bindtap='gotoSearch'>
+    <view class='flex-row flex-center'>
+      <view class='searchbaricon text-right'>
+        <image src='{{uploadpath}}resource/search.png'></image>
+      </view>
+      <view class='searchbartext  h6'>
+        品牌/车型
+      </view>
+    </view>
+  </view>
+</view>
+<view class='white-block padding-20' hidden='{{inviewing==true}}'>
+  <view class='flex-row'>
+    <view class='flex-1 flex-row flex-center' bindtap='chooseSort'>
+      <view class='txt-bold h6'>{{currentsorttype.name}}</view>
+      <view>
+        <image style='margin-left:10rpx;margin-top:10rpx;' class='icon-10' src='{{uploadpath}}resource/down.png'></image>
+      </view>
+    </view>
+
+    <view class='flex-1 flex-row flex-center' bindtap='chooseBrand'>
+      <view class='txt-bold h6' >{{brand_id==0?"品牌不限":brand.name}}</view>
+      <view>
+        <image style='margin-left:10rpx;margin-top:10rpx;' class='icon-10' src='{{uploadpath}}resource/down.png'></image>
+      </view>
+    </view>
+
+    <view class='flex-1 flex-row flex-center' bindtap='choosePrice'>
+      <view class='txt-bold h6'>{{currentpriceoption.name}}</view>
+      <view>
+        <image style='margin-left:10rpx;margin-top:10rpx;' class='icon-10' src='{{uploadpath}}resource/down.png'></image>
+      </view>
+    </view>
+
+    <view class='flex-1 flex-row flex-center' bindtap='chooseSize'>
+      <view class='txt-bold h6' >{{size_id==0?"车型不限":size.name}}</view>
+      <view>
+        <image style='margin-left:10rpx;margin-top:10rpx;' class='icon-10' src='{{uploadpath}}resource/down.png'></image>
+      </view>
+    </view>
+
+
+  </view>
+</view>
+
+
+<view class='sort' wx:if="{{choosingSort==true}}">
+  <view class='white-block border-top' style='padding-left:20rpx;'>
+    <view wx:for="{{sorttype}}" wx:key="k" class='sort-item  flex-row padding-20' bindtap='changeSort' wx:for-index="idx" id="{{idx}}">
+      <view class='flex-1 {{item.name==currentsorttype.name?"txt-primary":""}}'>{{item.name}}</view>
+      <view wx:if="{{item.name==currentsorttype.name}}">
+        <image class='icon' src='{{uploadpath}}resource/check.png'></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='sort' wx:if="{{choosingBrand==true}}">
+  <view class='white-block border-top' style='padding-left:20rpx;'>
+    <view  class='sort-item  flex-row padding-20' bindtap='changeBrand'  id="{{0}}">
+      <view class='flex-1 {{brand_id==0?"txt-primary":""}}'>全部</view>
+      <view wx:if="{{brand_id==0}}">
+        <image class='icon' src='{{uploadpath}}resource/check.png'></image>
+      </view>
+    </view>
+
+    <view wx:for="{{brandmodel}}" wx:key="k" class='sort-item  flex-row padding-20' bindtap='changeBrand' wx:for-index="idx" id="{{item.id}}">
+      <view class='flex-1 {{item.id==brand_id?"txt-primary":""}}'>{{item.name}}</view>
+      <view wx:if="{{item.id==brand_id}}">
+        <image class='icon' src='{{uploadpath}}resource/check.png'></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='sort'  wx:if="{{choosingPrice==true}}">
+  <view class='white-block border-top' style='padding-left:20rpx;'>
+    <view wx:for="{{priceoptions}}" wx:key="k" class='sort-item  flex-row padding-20' bindtap='changePrice' wx:for-index="idx" id="{{idx}}">
+      <view class='flex-1 {{item.name==currentpriceoption.name?"txt-primary":""}}'>{{item.name}}</view>
+      <view wx:if="{{item.name==currentpriceoption.name}}">
+        <image class='icon' src='{{uploadpath}}resource/check.png'></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class='sort' wx:if="{{choosingSize==true}}">
+  <view class='white-block border-top' style='padding-left:20rpx;'>
+    <view  class='sort-item  flex-row padding-20' bindtap='changeSize'  id="{{0}}">
+      <view class='flex-1 {{size_id==0?"txt-primary":""}}'>全部车型</view>
+      <view wx:if="{{size_id==0}}">
+        <image class='icon' src='{{uploadpath}}resource/check.png'></image>
+      </view>
+    </view>
+
+    <view wx:for="{{sizelist}}" wx:key="k" class='sort-item  flex-row padding-20' bindtap='changeSize' wx:for-index="idx" id="{{item.id}}">
+      <view class='flex-1 {{item.id==size_id?"txt-primary":""}}'>{{item.name}}</view>
+      <view wx:if="{{item.id==size_id}}">
+        <image class='icon' src='{{uploadpath}}resource/check.png'></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<scroll-view scroll-y style='width:100vw;margin-top:2rpx;height:calc( 100vh - {{inviewing==true?"0rpx":"316rpx"}} );' bindscrolltoupper="scrolltoupper" bindscrolltolower="scrolltolower" lower-threshold="{{121*(list.length-6)}}">
+  <view wx:if="{{list.length==0}}" class='text-center'>
+    <view style='padding-top:80rpx;'>
+      <image class='findno' src='{{uploadpath}}resource/findno.png'></image>
+    </view>
+    <view class='h6'>
+      暂时没找到你要对车型
+    </view>
+  </view>
+  <view wx:if="{{list.length>0}}" class='list white-block'>
+    <navigator url='/pages/car/car?id={{item.id}}' class='flex-row padding-20 item border-bottom' wx:for="{{list}}" wx:key="k" wx:for-index="idx">
+      <view>
+        <image class='photo' src='{{uploadpath}}car/{{item.photo}}'></image>
+      </view>
+      <view class='flex-1' style='margin-left:20rpx;'>
+        <view class='txt-bold'>{{item.automodel_shortname}}</view>
+        <view class='txt-bold margin-top-5'>{{item.name}}</view>
+        <view class='margin-top-5 h6 txt-gray'>{{item.factory_date_formatting}} | {{item.milestone}}万公里 | {{item.guishudi}}</view>
+        <view class="txt-primary h5 margin-top-5 ">
+          <text class='txt-bold '>{{item.price}}万</text>
+          <text class='h6 txt-gray' style='margin-left:20rpx;'>新车价：{{item.automodel_price}}万</text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view style='height:50rpx;'></view>
+</scroll-view>
+
+<view class='flex-row flex-center padding-20 white-block' hidden='{{inviewing==true}}'>
+  <view>
+    <image src='{{uploadpath}}resource/kefu1.png' class='icon-40'></image>
+  </view>
+  <view style='margin-left:20rpx;' class='flex-1'>
+    <view class='txt-bold'>想买什么车</view>
+    <view class='h6'>购车专家全市大搜罗</view>
+  </view>
+  <view>
+    <button size='mini' open-type='{{memberinfo.mobile.length==11?"":"getPhoneNumber"}}' bindgetphonenumber='getPhoneNo' bindtap='queryCar'>点我购车</button>
+  </view>
+</view>
+
+
+<view class='noticeblackbg' wx:if="{{noticesuccess==true}}"></view>
+<view class='noticebg' style='background-image:url({{uploadpath}}resource/noticebg.png)' wx:if="{{noticesuccess==true}}">
+  <view class='h3 text-center' style='margin-top:300rpx;'>已为你通知商家</view>
+  <view class='h6 text-center padding-20'>您的专属销售顾问会尽快与你取得联系！</view>
+  <view class='h6 text-center'>联系电话：{{memberinfo.mobile}}</view>
+  <view class='text-center padding-20'>
+    <button size='mini' class="h6" bindtap='closenotice'>知道了</button>
+  </view>
+</view>
