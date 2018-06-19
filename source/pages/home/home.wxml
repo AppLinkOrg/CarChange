@@ -21,17 +21,17 @@
       <view class='txt-white h5'>
         {{name}}
       </view>
-      <view class='txt-light h6 margin-top-10'>
-        在售：{{100}} | 已售：{{255}}
-      </view>
-      <view class='flex-row flex-center flex-1'>
-        <view class='flex-1 txt-light h6'>{{address}}</view>
+      <view class='flex-row flex-center flex-1 margin-top-10'>
+        <view class='flex-1'>
+          <view class='h6 txt-light '>电话：{{tel}}</view>
+          <view class='h6 txt-light '>{{address}}</view>
+        </view>
         <view>
           <image class='info-icon' src='{{uploadpath}}resource/location-white.png' bindtap='openMap' id="{{address}}"></image>
         </view>
         <view class='txt-white h6' style='margin-left:20rpx;margin-right:20rpx;'>|</view>
         <view>
-          <image class='info-icon' src='{{uploadpath}}resource/phone-white.png' bindtap='phoneCall' id="{{info.tel}}" wx:if="{{info.tel!=''}}"></image>
+          <image class='info-icon' src='{{uploadpath}}resource/phone-white.png' bindtap='phoneCall' id="{{tel}}" ></image>
         </view>
       </view>
     </view>
@@ -81,7 +81,7 @@
 
 
   <view class='padding-20 flex-row flex-wrap' wx:if="{{currenttab==1}}">
-    <view class='branditem' wx:for="{{priceoptions}}" wx:key="k">
+    <view class='branditem' wx:for="{{priceoptions}}" wx:key="k" wx:for-index="idx"   bindtap='switchPrice' id="{{idx}}">
       <view class='text-center h6'>
         {{item.name}}
       </view>
@@ -89,7 +89,7 @@
   </view>
 
   <view class='padding-20 flex-row flex-wrap' wx:if="{{currenttab==2}}">
-    <view class='branditem' wx:for="{{sizelist}}" wx:key="k">
+    <view class='branditem' wx:for="{{sizelist}}" wx:key="k" bindtap='switchSize' id="{{item.id}}">
       <view class='text-center'>
         <image src='{{uploadpath}}brand/{{item.logo}}'></image>
       </view>
@@ -193,7 +193,7 @@
 <view class='padding-40 white-block margin-top'>
   <view class='h4 txt-bold'>特色服务</view>
   <view class='flex-row flex-wrap margin-top-10'>
-    <navigator url='/pages/service/service?id={{item.id}}' class='baozhangitem flex-row flex-center' wx:for="{{servicelist}}" wx:key="k">
+    <navigator  class='baozhangitem flex-row flex-center' wx:for="{{servicelist}}" wx:key="k">
       <view>
         <icon size='12' type='success'></icon>
       </view>

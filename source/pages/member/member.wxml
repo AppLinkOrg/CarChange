@@ -1,2 +1,42 @@
 <!--pages/member/member.wxml-->
-<text>pages/member/member.wxml</text>
+<view class='text-center memberinfo'>
+<view>
+      <image class='avatar' src='{{UserInfo.avatarUrl}}'></image>
+    </view>
+    <view class='nickname'>
+      {{UserInfo.nickName}}
+    </view>
+</view>
+
+
+
+<view class='white-block block' style='margin-top:40rpx;'>
+<navigator  class='item item-split'><button open-type="contact" class='clear-button  '>联系客服</button></navigator>
+
+<navigator url='/pages/content/content?keycode=instruction&title=个人中心'  class='item'>关于我们</navigator>
+</view>
+
+
+<view class='padding-40 white-block margin-top'>
+  <view class='h4 txt-bold'>我的收藏</view>
+  <view class='flex-row flex-wrap'>
+    <navigator url='/pages/car/car?id={{item.id}}' wx:for="{{favcars}}" wx:key="k" class='caritem margin-top'>
+      <view>
+        <image src='{{uploadpath}}car/{{item.photo}}'></image>
+      </view>
+      <view class='h5 txt-bold '>
+        {{item.name}} <text class='txt-primary'>{{item.status_name}}</text>
+      </view>
+      <view class='h6'>
+        {{item.automodel_name}}
+      </view>
+      <view class='h6 txt-gray'>
+        {{item.factory_date_formatting}} {{milestone}}万公里
+      </view>
+      <view class='flex-row flex-bottom'>
+        <view class="txt-primary txt-bold">{{item.price}}万</view>
+        <view class='h6 txt-gray' style='margin-left:10rpx;'>新车价：{{item.automodel_price}}万</view>
+      </view>
+    </navigator>
+  </view>
+</view>

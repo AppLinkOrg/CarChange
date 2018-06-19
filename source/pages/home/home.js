@@ -70,7 +70,47 @@ class Content extends AppBase {
   }
   switchBrand(e){
     var id=e.currentTarget.id;
-    AppBase.CarSearchData={brand_id:id};
+    var indexbrand = this.Base.getMyData().indexbrand;
+    console.log(indexbrand);
+    var brand=null;
+    for (var i = 0; i < indexbrand.length;i++){
+      if (indexbrand[i].brand_id==id){
+        brand=indexbrand[i];
+        break;
+      }
+    }
+    if(brand!=null){
+      brand.id = brand.brand_id;
+      brand.name = brand.brand_name;
+    }
+    AppBase.CarSearchData={brand_id:id,brand:brand};
+    wx.switchTab({
+      url: '/pages/carsearch/carsearch',
+    })
+  }
+  switchPrice(e) {
+    var idx = e.currentTarget.id;
+    console.log(idx);
+    var priceoptions = this.Base.getMyData().priceoptions;
+    console.log(priceoptions);
+    var currentpriceoption = priceoptions[idx];
+    AppBase.CarSearchData = { currentpriceoption: currentpriceoption };
+    wx.switchTab({
+      url: '/pages/carsearch/carsearch',
+    })
+  }
+  switchSize(e){
+    var id = e.currentTarget.id;
+    var sizelist = this.Base.getMyData().sizelist;
+    console.log(sizelist);
+    var size = null;
+    for (var i = 0; i < sizelist.length; i++) {
+      if (sizelist[i].id == id) {
+        size = sizelist[i];
+        break;
+      }
+    }
+    AppBase.CarSearchData = { size_id: id, size: size };
     wx.switchTab({
       url: '/pages/carsearch/carsearch',
     })
@@ -82,6 +122,8 @@ body.onLoad = content.onLoad;
 body.onMyShow = content.onMyShow;
 body.gotoSearch = content.gotoSearch;
 body.changeCurrentTab = content.changeCurrentTab; 
-body.changeTab = content.changeTab;
-body.switchBrand = content.switchBrand;
+body.changeTab = content.changeTab; 
+body.switchBrand = content.switchBrand; 
+body.switchPrice = content.switchPrice;
+body.switchSize = content.switchSize;
 Page(body)

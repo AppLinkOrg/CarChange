@@ -16,69 +16,79 @@
   </view>
   <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
 </view>
-  <view style='height:95rpx;'></view>
-  <block wx:if="{{inputVal==''}}">
-    <block wx:if="{{history.length>0}}">
-      <view class='keywordtitle'>历史搜索</view>
-      <view class='flex-row' style='flex-wrap: wrap;padding-left:30rpx;'>
-        <view wx:for="{{history}}" wx:key="k" class='keyword' id="{{item.keyword}}" bindtap='searchKeyword'>{{item.keyword}}</view>
-      </view>
-    </block>
-    <block wx:if="{{hotest.length>0}}">
-      <view class='keywordtitle' style='margin-top:40rpx;'>热门搜索</view>
-      <view class='flex-row' style='flex-wrap: wrap;padding-left:30rpx;'>
-        <view wx:for="{{hotest}}" wx:key="k" class='keyword' id="{{item.keyword}}" bindtap='searchKeyword'>{{item.keyword}}</view>
-      </view>
-    </block>
-
-
-<view class='padding-40 white-block margin-top'>
-  <view class='h4 txt-bold'>热门推荐</view>
-  <view class='flex-row flex-wrap'>
-    <navigator url='/pages/car/car?id={{item.id}}' wx:for="{{hotlist}}" wx:key="k" class='caritem margin-top'>
-      <view>
-        <image src='{{uploadpath}}car/{{item.photo}}'></image>
-      </view>
-      <view class='h5 txt-bold '>
-        {{item.name}}
-      </view>
-      <view class='h6'>
-        {{item.automodel_name}}
-      </view>
-      <view class='h6 txt-gray'>
-        {{item.factory_date_formatting}} {{milestone}}万公里
-      </view>
-      <view class='flex-row flex-bottom'>
-        <view class="txt-primary txt-bold">{{item.price}}万</view>
-        <view class='h6 txt-gray' style='margin-left:10rpx;'>新车价：{{item.automodel_price}}万</view>
-      </view>
-    </navigator>
-  </view>
-</view>
-
-
-  </block>
-  <block wx:else>
-    <view>
-      <view  class='list white-block'>
-    <navigator url='/pages/car/car?id={{item.id}}' class='flex-row padding-20 item border-bottom' wx:for="{{searchresult}}" wx:key="k" wx:for-index="idx">
-      <view>
-        <image class='photo' src='{{uploadpath}}car/{{item.photo}}'></image>
-      </view>
-      <view class='flex-1' style='margin-left:20rpx;'>
-        <view class='txt-bold'>{{item.automodel_shortname}}</view>
-        <view class='txt-bold margin-top-5'>{{item.name}}</view>
-        <view class='margin-top-5 h6 txt-gray'>{{item.factory_date_formatting}} | {{item.milestone}}万公里 | {{item.guishudi}}</view>
-        <view class="txt-primary h5 margin-top-5 ">
-          <text class='txt-bold '>{{item.price}}万</text>
-          <text class='h6 txt-gray' style='margin-left:20rpx;'>新车价：{{item.automodel_price}}万</text>
-        </view>
-      </view>
-    </navigator>
-  </view>
-
-      <view class='inbottomla' wx:if="{{searchresult.length>7}}">
-        到底啦
-      </view>
+<view style='height:95rpx;'></view>
+<block wx:if="{{inputVal==''}}">
+  <block wx:if="{{history.length>0}}">
+    <view class='keywordtitle'>历史搜索</view>
+    <view class='flex-row' style='flex-wrap: wrap;padding-left:30rpx;'>
+      <view wx:for="{{history}}" wx:key="k" class='keyword' id="{{item.keyword}}" bindtap='searchKeyword'>{{item.keyword}}</view>
     </view>
   </block>
+  <block wx:if="{{hotest.length>0}}">
+    <view class='keywordtitle' style='margin-top:40rpx;'>热门搜索</view>
+    <view class='flex-row' style='flex-wrap: wrap;padding-left:30rpx;'>
+      <view wx:for="{{hotest}}" wx:key="k" class='keyword' id="{{item.keyword}}" bindtap='searchKeyword'>{{item.keyword}}</view>
+    </view>
+  </block>
+
+
+  <view class='padding-40 white-block margin-top'>
+    <view class='h4 txt-bold'>热门推荐</view>
+    <view class='flex-row flex-wrap'>
+      <navigator url='/pages/car/car?id={{item.id}}' wx:for="{{hotlist}}" wx:key="k" class='caritem margin-top'>
+        <view>
+          <image src='{{uploadpath}}car/{{item.photo}}'></image>
+        </view>
+        <view class='h5 txt-bold '>
+          {{item.name}}
+        </view>
+        <view class='h6'>
+          {{item.automodel_name}}
+        </view>
+        <view class='h6 txt-gray'>
+          {{item.factory_date_formatting}} {{milestone}}万公里
+        </view>
+        <view class='flex-row flex-bottom'>
+          <view class="txt-primary txt-bold">{{item.price}}万</view>
+          <view class='h6 txt-gray' style='margin-left:10rpx;'>新车价：{{item.automodel_price}}万</view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+
+</block>
+<block wx:else>
+  <view wx:if="{{searchresult.length==0}}">
+    <view  class='text-center'>
+      <view style='padding-top:80rpx;'>
+        <image class='findno' src='{{uploadpath}}resource/findno.png'></image>
+      </view>
+      <view class='h6 margin-top'>
+        暂时没找到你要对车型
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{searchresult.length>0}}">
+    <view class='list white-block'>
+      <navigator url='/pages/car/car?id={{item.id}}' class='flex-row padding-20 item border-bottom' wx:for="{{searchresult}}" wx:key="k" wx:for-index="idx">
+        <view>
+          <image class='photo' src='{{uploadpath}}car/{{item.photo}}'></image>
+        </view>
+        <view class='flex-1' style='margin-left:20rpx;'>
+          <view class='txt-bold'>{{item.automodel_shortname}}</view>
+          <view class='txt-bold margin-top-5'>{{item.name}}</view>
+          <view class='margin-top-5 h6 txt-gray'>{{item.factory_date_formatting}} | {{item.milestone}}万公里 | {{item.guishudi}}</view>
+          <view class="txt-primary h5 margin-top-5 ">
+            <text class='txt-bold '>{{item.price}}万</text>
+            <text class='h6 txt-gray' style='margin-left:20rpx;'>新车价：{{item.automodel_price}}万</text>
+          </view>
+        </view>
+      </navigator>
+    </view>
+
+    <view class='inbottomla' wx:if="{{searchresult.length>7}}">
+      到底啦
+    </view>
+  </view>
+</block>

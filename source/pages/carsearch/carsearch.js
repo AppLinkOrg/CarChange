@@ -16,7 +16,7 @@ class Content extends AppBase {
     var sorttype=[{name:"热门车源",orderby:" r_main.hotcar desc"},
       { name: "最新上架", orderby: " r_main.published_date desc" },
       { name: "价格最低", orderby: " r_main.price" },
-      { name: "价格最高", orderby: " r_main.price " },
+      { name: "价格最高", orderby: " r_main.price desc" },
       { name: "里程最短", orderby: " r_main.milestone  desc" },
       { name: "车辆最短", orderby: " r_main.factory_date desc" }];
     this.Base.setMyData({
@@ -92,11 +92,9 @@ class Content extends AppBase {
     });
   }
   queryCar(e) {
-    var that = this;
-    var memberinfo = that.Base.getMyData().memberinfo;
-    if (memberinfo.mobile.length == 11) {
-      this.updateToTrack();
-    }
+    wx.switchTab({
+      url: '/pages/findcar/findcar',
+    })
   }
   updateToTrack() {
     var api = new CarApi();

@@ -24,7 +24,7 @@ page{
 } 
 view,navigator{
   font-size: 32rpx;
-  font-weight: lighter;
+  font-weight: 300;
   color: #2c2c2c;
 }
 .flex-row{
@@ -68,7 +68,7 @@ view,navigator{
   color:white;
 }
 .txt-gray{
-  color:#ddd;
+  color:#aaa;
 }
 .txt-light{
   color: #fcfcfc;

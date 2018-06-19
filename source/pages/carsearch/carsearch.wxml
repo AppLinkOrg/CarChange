@@ -142,7 +142,7 @@
     <view class='h6'>购车专家全市大搜罗</view>
   </view>
   <view>
-    <button size='mini' open-type='{{memberinfo.mobile.length==11?"":"getPhoneNumber"}}' bindgetphonenumber='getPhoneNo' bindtap='queryCar'>点我购车</button>
+    <button size='mini'  bindtap='queryCar'>点我找车</button>
   </view>
 </view>
 
