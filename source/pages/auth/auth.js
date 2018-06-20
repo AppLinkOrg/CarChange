@@ -11,7 +11,8 @@ Page({
   },
   getUserInfo: function (e) {
     console.log(e);
-    wx.navigateBack({
+    wx.switchTab({
+      url: '/pages/home/home',
     })
   }
 })
