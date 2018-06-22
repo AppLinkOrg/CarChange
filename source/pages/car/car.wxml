@@ -19,8 +19,7 @@
   <view class='margin-top-10 flex-row'>
     <view class=' flex-1'>
       <view class='h4 txt-primary txt-bold margin-top-10'>{{info.price}}万</view>
-
-      <view class='h6 txt-gray margin-top-10 '>新车含税价：{{modelinfo.totalprice}}万 省{{modelinfo.totalprice-info.price}}万</view>
+      <view class='h6 txt-gray margin-top-10 '>新车含税价：{{modelinfo.totalprice}}万 省{{shengprice}}万</view>
     </view>
     <view class='margin-top-10 '>
       <button size='mini'   open-type='{{memberinfo.mobile.length==11?"":"getPhoneNumber"}}' bindgetphonenumber='getPhoneNo' bindtap='queryCar'>降价通知</button>

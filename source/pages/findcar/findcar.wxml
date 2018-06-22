@@ -12,24 +12,24 @@
 <view class='margin-top'></view>
 <view class='margin-top flex-row flex-center  border-bottom padding-20' style='margin:20rpx;'>
   <view style='width:200rpx;'>意向车型</view>
-  <view class='flex-1'><input placeholder='请选择' name="automodel" value='{{automodel}}'></input></view>
+  <view class='flex-1'><input placeholder='请选择' name="automodel" value='{{automodel}}' hidden="{{noticesuccess==true}}"></input></view>
 </view>
 
 <view class='margin-top flex-row flex-center  border-bottom padding-20' style='margin:20rpx;'>
   <view style='width:200rpx;'>购车预算</view>
-  <view class='flex-1'><input placeholder='请输入' value='{{price}}' name="price" type='number' ></input></view>
+  <view class='flex-1'><input placeholder='请输入' value='{{price}}' name="price" type='number'  hidden="{{noticesuccess==true}}"></input></view>
   <view>万元</view>
 </view>
 
 <view class='margin-top flex-row flex-center  border-bottom padding-20' style='margin:20rpx;'>
   <view style='width:200rpx;'>其它要求</view>
-  <view class='flex-1'><textarea placeholder='如2年，3万公里内或新车' value='{{require}}' class='ta' auto-height maxlength='144' name="require" ></textarea></view>
+  <view class='flex-1'><textarea placeholder='如2年，3万公里内或新车' value='{{require}}' class='ta' auto-height maxlength='144' name="require" hidden="{{noticesuccess==true}}" ></textarea></view>
 </view>
 
 
 <view class='margin-top flex-row flex-center  border-bottom padding-20' style='margin:20rpx;'>
   <view style='width:200rpx;'>手机号</view>
-  <view class='flex-1'><input placeholder='请输入' value='{{mobile}}' name="mobile" maxlength='11' ></input></view>
+  <view class='flex-1'><input placeholder='请输入' value='{{mobile}}' name="mobile" maxlength='11'  hidden="{{noticesuccess==true}}"></input></view>
   <view><button size='mini' open-type='getPhoneNumber' bindgetphonenumber='getPhoneNo' >获取</button></view>
 </view>
 

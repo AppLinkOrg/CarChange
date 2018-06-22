@@ -54,15 +54,17 @@ height: 350rpx;
 }
 .searchbar{
   margin:40rpx;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.5);
   padding:10rpx;
   border-radius: 30rpx;
 }
 
 .searchbar .searchbaricon{
-  width: 40rpx;
-  height: 40rpx;
+  width: 24rpx;
+  height: 24rpx;
   margin-left: 250rpx;
+  margin-right:20rpx;
+  margin-top: -14rpx;
 }
 .searchbar .searchbaricon image{
   width: 40rpx;
@@ -77,8 +79,8 @@ height: 350rpx;
   padding-bottom: 20rpx;
 }
 .branditem image{
-  width:100rpx;
-  height: 100rpx;
+  width:80rpx;
+  height: 72rpx;
 }
 
 .baozhangitem{

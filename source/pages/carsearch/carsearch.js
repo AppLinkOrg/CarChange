@@ -42,8 +42,9 @@ class Content extends AppBase {
       this.Base.setMyData({ memberinfo });
     });
 
-    var brandmodel = this.Base.getMyData().brandmodel;
-    if(brandmodel.length==0){
+    //var brandmodel = this.Base.getMyData().brandmodel;
+    //if(brandmodel.length==0)
+    {
 
       var carapi = new CarApi();
       carapi.brandmodel({}, (brandmodel) => {
@@ -167,6 +168,10 @@ class Content extends AppBase {
       url: '/pages/search/search',
     })
   }
+  closeSort(){
+
+    this.Base.setMyData({ choosingBrand: false, choosingSort: false, choosingPrice:false,choosingSize:false });
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
@@ -188,4 +193,5 @@ body.loaddata = content.loaddata;
 body.scrolltoupper = content.scrolltoupper; 
 body.scrolltolower = content.scrolltolower;
 body.gotoSearch = content.gotoSearch;
+body.closeSort=content.closeSort;
 Page(body)

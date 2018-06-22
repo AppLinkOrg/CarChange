@@ -46,7 +46,7 @@
 </view>
 
 
-<view class='sort' wx:if="{{choosingSort==true}}">
+<view class='sort' wx:if="{{choosingSort==true}}" bindtap='closeSort'>
   <view class='white-block border-top' style='padding-left:20rpx;'>
     <view wx:for="{{sorttype}}" wx:key="k" class='sort-item  flex-row padding-20' bindtap='changeSort' wx:for-index="idx" id="{{idx}}">
       <view class='flex-1 {{item.name==currentsorttype.name?"txt-primary":""}}'>{{item.name}}</view>
@@ -57,7 +57,7 @@
   </view>
 </view>
 
-<view class='sort' wx:if="{{choosingBrand==true}}">
+<view class='sort' wx:if="{{choosingBrand==true}}" bindtap='closeSort'>
   <view class='white-block border-top' style='padding-left:20rpx;'>
     <view  class='sort-item  flex-row padding-20' bindtap='changeBrand'  id="{{0}}">
       <view class='flex-1 {{brand_id==0?"txt-primary":""}}'>全部</view>
@@ -75,7 +75,7 @@
   </view>
 </view>
 
-<view class='sort'  wx:if="{{choosingPrice==true}}">
+<view class='sort'  wx:if="{{choosingPrice==true}}" bindtap='closeSort'>
   <view class='white-block border-top' style='padding-left:20rpx;'>
     <view wx:for="{{priceoptions}}" wx:key="k" class='sort-item  flex-row padding-20' bindtap='changePrice' wx:for-index="idx" id="{{idx}}">
       <view class='flex-1 {{item.name==currentpriceoption.name?"txt-primary":""}}'>{{item.name}}</view>
@@ -87,7 +87,7 @@
 </view>
 
 
-<view class='sort' wx:if="{{choosingSize==true}}">
+<view class='sort' wx:if="{{choosingSize==true}}" bindtap='closeSort'>
   <view class='white-block border-top' style='padding-left:20rpx;'>
     <view  class='sort-item  flex-row padding-20' bindtap='changeSize'  id="{{0}}">
       <view class='flex-1 {{size_id==0?"txt-primary":""}}'>全部车型</view>
@@ -104,6 +104,9 @@
     </view>
   </view>
 </view>
+
+
+
 
 <scroll-view scroll-y style='width:100vw;margin-top:2rpx;height:calc( 100vh - {{inviewing==true?"0rpx":"316rpx"}} );' bindscrolltoupper="scrolltoupper" bindscrolltolower="scrolltolower" lower-threshold="{{121*(list.length-6)}}">
   <view wx:if="{{list.length==0}}" class='text-center'>
@@ -132,6 +135,7 @@
   </view>
   <view style='height:50rpx;'></view>
 </scroll-view>
+
 
 <view class='flex-row flex-center padding-20 white-block' hidden='{{inviewing==true}}'>
   <view>

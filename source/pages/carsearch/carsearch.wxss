@@ -15,7 +15,7 @@
   height: 40rpx;
 }
 .searchbar .searchbartext{
-  color: #dbdbdb;
+  color: #ccc;
 }
 
 .list{
@@ -56,6 +56,7 @@
 
 .sort{
   position: absolute;
+  
   width: 100vw;
   background: rgba(0, 0, 0, 0.7);
   height: calc( 100vh - 184rpx );

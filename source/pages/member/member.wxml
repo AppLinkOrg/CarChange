@@ -19,7 +19,7 @@
 
 <view class='padding-40 white-block margin-top' wx:if="{{favcars.length>0}}">
   <view class='h4 txt-bold'>我的收藏</view>
-  <view class='flex-row flex-wrap'>
+  <view class='flex-row flex-wrap' style='margin-left:8rpx;'>
     <navigator url='/pages/car/car?id={{item.id}}' wx:for="{{favcars}}" wx:key="k" class='caritem margin-top'>
       <view>
         <image src='{{uploadpath}}car/{{item.photo}}'></image>
@@ -31,7 +31,7 @@
         {{item.automodel_name}}
       </view>
       <view class='h6 txt-gray'>
-        {{item.factory_date_formatting}} {{milestone}}万公里
+        {{item.factory_date_formatting}} {{item.milestone}}万公里
       </view>
       <view class='flex-row flex-bottom'>
         <view class="txt-primary txt-bold">{{item.price}}万</view>

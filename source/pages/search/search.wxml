@@ -34,7 +34,7 @@
 
   <view class='padding-40 white-block margin-top'>
     <view class='h4 txt-bold'>热门推荐</view>
-    <view class='flex-row flex-wrap'>
+    <view class='flex-row flex-wrap' style='margin-left:8rpx;'>
       <navigator url='/pages/car/car?id={{item.id}}' wx:for="{{hotlist}}" wx:key="k" class='caritem margin-top'>
         <view>
           <image src='{{uploadpath}}car/{{item.photo}}'></image>

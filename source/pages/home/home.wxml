@@ -67,8 +67,8 @@
       </view>
     </view>
     <view class='branditem' bindtap='switchBrand' id="0">
-      <view class='text-center' style='height:110rpx;'>
-        <image style='width:70rpx;height:70rpx;margin-top:10rpx;' src='{{uploadpath}}resource/more-right.png'></image>
+      <view class='text-center' style='height:82rpx;' >
+        <image  src='{{uploadpath}}resource/more-right.png' style='width:40rpx;height:40rpx;margin-top:20rpx;'></image>
       </view>
       <view class='text-center h6'>
         更多品牌
@@ -103,7 +103,7 @@
 
 <view class='padding-40 white-block margin-top'>
   <view class='h4 txt-bold'>最新上架</view>
-  <view class='flex-row flex-wrap'>
+  <view class='flex-row flex-wrap' style='margin-left:8rpx;'>
     <navigator url='/pages/car/car?id={{item.id}}' wx:for="{{recommlist}}" wx:key="k" class='caritem margin-top'>
       <view>
         <image src='{{uploadpath}}car/{{item.photo}}'></image>
@@ -115,7 +115,7 @@
         {{item.automodel_name}}
       </view>
       <view class='h6 txt-gray'>
-        {{item.factory_date_formatting}} {{milestone}}万公里
+        {{item.factory_date_formatting}} {{item.milestone}}万公里
       </view>
       <view class='flex-row flex-bottom'>
         <view class="txt-primary txt-bold">{{item.price}}万</view>
@@ -131,7 +131,7 @@
 
 <view class='padding-40 white-block margin-top'>
   <view class='h4 txt-bold'>热门推荐</view>
-  <view class='flex-row flex-wrap'>
+  <view class='flex-row flex-wrap' style='margin-left:8rpx;'>
     <navigator url='/pages/car/car?id={{item.id}}' wx:for="{{hotlist}}" wx:key="k" class='caritem margin-top'>
       <view>
         <image src='{{uploadpath}}car/{{item.photo}}'></image>
@@ -143,7 +143,7 @@
         {{item.automodel_name}}
       </view>
       <view class='h6 txt-gray'>
-        {{item.factory_date_formatting}} {{milestone}}万公里
+        {{item.factory_date_formatting}} {{item.milestone}}万公里
       </view>
       <view class='flex-row flex-bottom'>
         <view class="txt-primary txt-bold">{{item.price}}万</view>

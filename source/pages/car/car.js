@@ -10,19 +10,23 @@ class Content extends AppBase {
   constructor() {
     super();
   }
+  
   onLoad(options) {
     this.Base.Page = this;
     //options.id=1;
     super.onLoad(options);
     this.Base.setMyData({ noticesuccess:false});
   }
+
   onMyShow() {
     var that = this;
     var api = new CarApi();
     api.info({id:this.Base.options.id},(info)=>{
       that.Base.setMyData({info,faved:info.faved});
       api.modelinfo({id:info.automodel_id},(modelinfo)=>{
-        that.Base.setMyData({ modelinfo });
+        var shengprice = parseFloat(modelinfo.totalprice) - parseFloat(info.price); 
+        shengprice=shengprice.toFixed(2);
+        that.Base.setMyData({ modelinfo: modelinfo, shengprice: shengprice });
       });
       api.photolist({ car_id: info.id }, (photolist) => {
         that.Base.setMyData({ photolist });

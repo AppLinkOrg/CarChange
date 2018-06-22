@@ -7,11 +7,11 @@
   <view class='flex-row flex-center  border-bottom padding-20'>
     <view style='width:200rpx;'>手机号</view>
     <view class='flex-1'><input placeholder='请输入' value='{{mobile}}' name="mobile" maxlength='11' ></input></view>
-  <view><button size='mini' open-type='getPhoneNumber' bindgetphonenumber='getPhoneNo' >获取</button></view>
+  <view><button size='mini' open-type='getPhoneNumber' bindgetphonenumber='getPhoneNo'  hidden="{{noticesuccess==true}}">获取</button></view>
   </view>
   <view class='flex-row flex-center  border-bottom padding-20'>
     <view style='width:200rpx;'>车辆描述</view>
-    <view class='flex-1'><textarea placeholder='如2年，3万公里内或新车' value='{{description}}' class='ta' auto-height maxlength='144' name="description" ></textarea></view>
+    <view class='flex-1'><textarea placeholder='如2年，3万公里内或新车' value='' class='ta' auto-height maxlength='144' name="description" hidden="{{noticesuccess==true}}"></textarea></view>
   </view>
 </view>
 
