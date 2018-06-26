@@ -79,7 +79,7 @@ export class AppBase {
        */
       onShareAppMessage: base.onShareAppMessage,
       onMyShow: base.onMyShow, 
-
+      phonenoCallback: base.phonenoCallback,
       viewPhoto: base.viewPhoto,
       phoneCall: base.phoneCall,
       openMap: base.openMap,
@@ -90,7 +90,8 @@ export class AppBase {
       closePage: base.closePage,
       gotoPage: base.gotoPage, 
       navtoPage: base.navtoPage,
-      openContent: base.openContent
+      openContent: base.openContent,
+      getPhoneNo: base.getPhoneNo
     }
   }
   log() {
@@ -240,6 +241,23 @@ export class AppBase {
   }
   getMyData() {
     return this.Page.data;
+  }
+  getPhoneNo(e) {
+    var that = this;
+    console.log(e);
+    var api = new WechatApi();
+    api.decrypteddata(e.detail, (ret) => {
+      console.log(ret);
+      var memberapi = new MemberApi();
+      memberapi.bindmobile({ mobile: ret.return.phoneNumber }, (aa) => {
+        that.phonenoCallback(ret.return.phoneNumber,e)
+      });
+    });
+  }
+  phonenoCallback(phoneno,e){
+    console.log("phone no callback");
+    console.log(phoneno);
+    console.log(e);
   }
   viewPhoto(e) {
     var img = e.currentTarget.id;
@@ -522,6 +540,8 @@ export class AppBase {
       }
     })
   }
+
+
   takeVideo(modul, callback) {
     wx.chooseVideo({
       compressed: false,
