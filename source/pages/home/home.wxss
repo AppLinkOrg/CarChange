@@ -96,6 +96,6 @@ height: 350rpx;
   width: 50%;
 }
 .caritem image{
-  width: 320rpx;
-  height: 240rpx;
+  width: 340rpx;
+  height: 250rpx;
 }

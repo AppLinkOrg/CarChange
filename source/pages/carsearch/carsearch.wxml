@@ -106,9 +106,11 @@
 </view>
 
 
+<!--
+bindscrolltoupper="scrolltoupper" bindscrolltolower="scrolltolower"
+-->
 
-
-<scroll-view scroll-y style='width:100vw;margin-top:2rpx;height:calc( 100vh - {{inviewing==true?"0rpx":"316rpx"}} );' bindscrolltoupper="scrolltoupper" bindscrolltolower="scrolltolower" lower-threshold="{{121*(list.length-6)}}">
+<scroll-view scroll-y style='width:100vw;margin-top:2rpx;height:calc( 100vh - {{inviewing==true?"0rpx":"316rpx"}} );'  lower-threshold="{{121*(list.length-6)}}">
   <view wx:if="{{list.length==0}}" class='text-center'>
     <view style='padding-top:80rpx;'>
       <image class='findno' src='{{uploadpath}}resource/findno.png'></image>
@@ -137,7 +139,7 @@
 </scroll-view>
 
 
-<view class='flex-row flex-center padding-20 white-block' hidden='{{inviewing==true}}'>
+<view class='flex-row flex-center padding-20 white-block' hidden='{{inviewing==true}}' style='background:#e9e9e9'>
   <view>
     <image src='{{uploadpath}}resource/kefu1.png' class='icon-40'></image>
   </view>
@@ -146,7 +148,7 @@
     <view class='h6'>购车专家全市大搜罗</view>
   </view>
   <view>
-    <button size='mini'  bindtap='queryCar'>点我找车</button>
+    <button size='mini' type='primary' bindtap='queryCar'>点我找车</button>
   </view>
 </view>
 

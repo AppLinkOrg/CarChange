@@ -33,7 +33,7 @@
   <view><button size='mini' open-type='getPhoneNumber' bindgetphonenumber='getPhoneNo' >获取</button></view>
 </view>
 
-<view class='padding-40 margin-top'>
+<view class='padding-40 margin-top' >
   <button type='primary'  formType="submit" >专属顾问为你提供服务</button>
 </view>
 

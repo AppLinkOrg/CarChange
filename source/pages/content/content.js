@@ -20,12 +20,18 @@ class Content extends AppBase {
     contentapi.get({ keycode: keycode }, function (data) {
       if (data == null) {
         WxParse.wxParse('content', 'html', "请去后台设置文字内容:" + keycode, that, 10);
-        that.setData({ title: title });
+        //that.setData({ title: title });
+        wx.setNavigationBarTitle({
+          title: title,
+        })
       } else {
 
         data.content = that.Base.util.HtmlDecode(data.content);
         WxParse.wxParse('content', 'html', data.content, that, 10);
-        that.setData({ title: data.name });
+
+        wx.setNavigationBarTitle({
+          title: data.name,
+        })
       }
     });
   }

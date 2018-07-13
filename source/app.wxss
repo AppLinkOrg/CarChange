@@ -58,7 +58,7 @@ view,navigator{
   color:white;
 }
 .bg-primary{
-  background: #BF8436;
+  background: #c28739;
 }
 
 .txt-primary{

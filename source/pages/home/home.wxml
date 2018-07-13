@@ -101,7 +101,7 @@
 
 </view>
 
-<view class='padding-40 white-block margin-top'>
+<view class='padding-20 white-block margin-top'>
   <view class='h4 txt-bold'>最新上架</view>
   <view class='flex-row flex-wrap' style='margin-left:8rpx;'>
     <navigator url='/pages/car/car?id={{item.id}}' wx:for="{{recommlist}}" wx:key="k" class='caritem margin-top'>
@@ -110,9 +110,6 @@
       </view>
       <view class='h5 txt-bold '>
         {{item.name}}
-      </view>
-      <view class='h6'>
-        {{item.automodel_name}}
       </view>
       <view class='h6 txt-gray'>
         {{item.factory_date_formatting}} {{item.milestone}}万公里
@@ -129,7 +126,7 @@
 </navigator>
 
 
-<view class='padding-40 white-block margin-top'>
+<view class='padding-20 white-block margin-top'>
   <view class='h4 txt-bold'>热门推荐</view>
   <view class='flex-row flex-wrap' style='margin-left:8rpx;'>
     <navigator url='/pages/car/car?id={{item.id}}' wx:for="{{hotlist}}" wx:key="k" class='caritem margin-top'>
@@ -138,9 +135,6 @@
       </view>
       <view class='h5 txt-bold '>
         {{item.name}}
-      </view>
-      <view class='h6'>
-        {{item.automodel_name}}
       </view>
       <view class='h6 txt-gray'>
         {{item.factory_date_formatting}} {{item.milestone}}万公里
@@ -165,7 +159,8 @@
         <image src='{{uploadpath}}resource/anxin.png'></image>
       </view>
       <view class='text-center h6'>
-        无事故，无火烧，无水泡
+        <text>无事故, 无火烧
+        ,无水泡</text>
       </view>
     </view>
     <view class='baozhangitem'>
@@ -173,7 +168,8 @@
         <image src='{{uploadpath}}resource/jiance.png'></image>
       </view>
       <view class='text-center h6'>
-        专业检测车队，还原真实车况
+        <text>专业检测车队
+        还原真实车况</text>
       </view>
     </view>
     <view class='baozhangitem'>
@@ -181,7 +177,8 @@
         <image src='{{uploadpath}}resource/baozheng.png'></image>
       </view>
       <view class='text-center h6'>
-        全程保障，无忧购车
+        <text>全程保障
+        无忧购车</text>
       </view>
     </view>
   </view>
